@@ -7,8 +7,13 @@ type RegisterUserPayload struct {
 	Password  string `json:"password" validate:"required,min=6"`
 }
 
+type LoginUserPayload struct {
+	Email    string `json:"email" validate:"required,email"`
+	Password string `json:"password" validate:"required,min=6"`
+}
+
 type User struct {
-	ID        int64  `json:"id"`
+	ID        int    `json:"id"`
 	FirstName string `json:"firstName"`
 	LastName  string `json:"lastName"`
 	Email     string `json:"email"`
