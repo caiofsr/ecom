@@ -1,0 +1,10 @@
+### Regiter user
+POST http://localhost:3333/api/v1/register
+content-type: application/json
+
+{
+    "firstName": "Caio",
+    "lastName": "Fernando",
+    "email": "email@email.com",
+    "password": "123456"
+}
