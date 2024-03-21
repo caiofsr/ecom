@@ -40,7 +40,7 @@ func (s *Store) CreateUser(types.User) error {
 	return nil
 }
 
-func (s *Store) GetUserById(id int) (*types.User, error) {
+func (s *Store) GetUserByID(id int) (*types.User, error) {
 	return nil, nil
 }
 
