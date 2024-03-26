@@ -5,8 +5,10 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/caiofsr/ecom/service/user"
 	"github.com/gorilla/mux"
+
+	"github.com/caiofsr/ecom/service/product"
+	"github.com/caiofsr/ecom/service/user"
 )
 
 type ApiServer struct {
@@ -28,6 +30,10 @@ func (s *ApiServer) Run() error {
 	userStore := user.NewStore(s.db)
 	userHandler := user.NewHandler(userStore)
 	userHandler.RegisterRoutes(subrouter)
+
+	productStore := product.NewStore(s.db)
+	productHandler := product.NewHandler(productStore)
+	productHandler.RegisterRoutes(subrouter)
 
 	log.Println("Listening on ", s.addr)
 

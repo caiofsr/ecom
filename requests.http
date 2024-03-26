@@ -17,3 +17,18 @@ Content-Type: application/json
     "email": "email@email.com",
     "password": "123s456"
 }
+
+### List products
+GET http://localhost:3333/api/v1/products
+
+### Create product
+POST http://localhost:3333/api/v1/products
+Content-Type: application/json
+
+{
+    "name": "Nome",
+    "description": "Descrição",
+    "quantity": 20,
+    "price": 19.99,
+    "image": "image.png"
+}
