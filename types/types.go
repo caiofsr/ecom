@@ -22,13 +22,13 @@ type CreateProductPayload struct {
 	Quantity    int     `json:"quantity"    validate:"required"`
 }
 
-type CartItem struct {
+type CartCheckoutItem struct {
 	ProductID int `json:"productId"`
 	Quantity  int `json:"quantity"`
 }
 
 type CartCheckoutPayload struct {
-	Items []CartItem `json:"items" validate:"required"`
+	Items []CartCheckoutItem `json:"items" validate:"required"`
 }
 
 type User struct {
@@ -76,7 +76,9 @@ type UserStore interface {
 
 type ProductStore interface {
 	GetProducts() ([]Product, error)
+	GetProductsByIDs(ids []int) ([]Product, error)
 	CreateProduct(Product) error
+	UpdateProduct(Product) error
 }
 
 type OrderStore interface {
