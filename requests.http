@@ -15,7 +15,7 @@ Content-Type: application/json
 
 {
     "email": "email@email.com",
-    "password": "123s456"
+    "password": "123456"
 }
 
 ### List products
