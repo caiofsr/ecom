@@ -32,3 +32,17 @@ Content-Type: application/json
     "price": 19.99,
     "image": "image.png"
 }
+
+### Create cart checkout
+POST http://localhost:3333/api/v1/cart/checkout
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmVkQXQiOjE3MTM1NjI5NjEsInVzZXJJRCI6IjEifQ.Cw36CHko4Zo8umTHLhu6MTeKtrvBV3X82d67JJbyLdw
+
+{
+    "items": [
+        {
+            "productID": 1,
+            "quantity": 1
+        }
+    ]
+}

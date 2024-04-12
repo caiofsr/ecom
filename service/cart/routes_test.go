@@ -19,10 +19,19 @@ var mockProducts = []types.Product{
 	{ID: 5, Name: "almost stock", Price: 30, Quantity: 1},
 }
 
+var mockUser = types.User{
+	ID:        1,
+	FirstName: "Foo",
+	LastName:  "Bar",
+	Email:     "foo@bar.com",
+	Password:  "password",
+}
+
 func TestCartServiceHandler(t *testing.T) {
 	productStore := &mockProductStore{}
 	orderStore := &mockOrderStore{}
-	handler := NewHandler(orderStore, productStore)
+	userStore := &mockUserStore{}
+	handler := NewHandler(orderStore, productStore, userStore)
 
 	t.Run("should fail to checkout if the cart items do not exist", func(t *testing.T) {
 		payload := types.CartCheckoutPayload{
@@ -204,6 +213,20 @@ func TestCartServiceHandler(t *testing.T) {
 			t.Errorf("expected total price to be 530, got %f", response["total_price"])
 		}
 	})
+}
+
+type mockUserStore struct{}
+
+func (m *mockUserStore) GetUserByID(id int) (*types.User, error) {
+	return &mockUser, nil
+}
+
+func (m *mockUserStore) GetUserByEmail(email string) (*types.User, error) {
+	return &mockUser, nil
+}
+
+func (m *mockUserStore) CreateUser(user types.User) error {
+	return nil
 }
 
 type mockProductStore struct{}
